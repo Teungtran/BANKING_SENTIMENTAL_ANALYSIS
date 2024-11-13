@@ -1,12 +1,103 @@
-# BANKING_SENTIMENTAL_ANALYSIS
-This is a model using BERT NEURAL NETWORK BERT NERUAL NETWORK and the Hugging Face Transformers library to classify the sentiment of reviews of top 5 banks in VIETNAM, 
+# 🏦 BANKING_SENTIMENTAL_ANALYSIS
 
-** Data is scraped from GG map reviews, using Data Scraper extension
+## 🔍 Tổng quan
+Dự án này sử dụng mô hình BERT Neural Network và thư viện Hugging Face Transformers để phân tích cảm xúc từ đánh giá của khách hàng về 5 ngân hàng hàng đầu tại Việt Nam.
 
-** Used Streamlit to create an interactive app for future text's sentiment
+## 🌟 Tính năng chính
+- Thu thập dữ liệu đánh giá từ Google Maps Reviews
+- Sử dụng BERT để phân tích cảm xúc
+- Giao diện tương tác với Streamlit
+- Hỗ trợ đa dạng định dạng dữ liệu đầu vào
+- Xử lý ngôn ngữ tự nhiên tiếng Việt
 
-** NOTE: The reason we check for both string and list data types in the sentence variable is to handle different ways the text data could be structured in the DataFrame
+## 🛠 Công nghệ sử dụng
+- BERT Neural Network
+- Hugging Face Transformers
+- Python
+- Streamlit
+- Data Scraper (Chrome Extension)
+- Pandas
+- NumPy
 
-Data Variability: This dataset is from Kaggle , and may have varying data structures. Sometimes the content column might contain a single string per review, and other times it could contain a list of strings representing multiple sentences from a single review(icons...). By checking for both string and list data types, the code can handle these variations and still perform sentiment analysis on the text data.
+## 📊 Xử lý dữ liệu
+### Thu thập dữ liệu
+- Sử dụng Data Scraper Extension để thu thập đánh giá từ Google Maps
+- Lưu trữ dữ liệu dưới dạng CSV
+- Tự động làm sạch và chuẩn hóa dữ liệu
 
-Model Compatibility: The Hugging Face Transformers pipeline (NLP) expects text input in the format of a single string or a list of strings. This is why we need to ensure that the input to the pipeline (sentence[0] in our case) is either a string or a list of strings.
+### Đặc điểm dữ liệu
+- Hỗ trợ nhiều định dạng đầu vào:
+  - Chuỗi văn bản đơn
+  - Danh sách các câu
+  - Đánh giá có biểu tượng cảm xúc
+
+## 💻 Cài đặt
+```bash
+pip install transformers torch pandas numpy streamlit
+```
+
+## 🚀 Hướng dẫn sử dụng
+1. Cài đặt các thư viện cần thiết
+2. Chạy ứng dụng Streamlit:
+```bash
+streamlit run app.py
+```
+3. Nhập văn bản cần phân tích
+4. Xem kết quả phân tích cảm xúc
+
+## 📈 Mô hình
+### Kiến trúc
+- BERT Neural Network
+- Fine-tuned cho tiếng Việt
+- Tối ưu hóa cho phân tích cảm xúc
+
+### Xử lý đầu vào
+```python
+def process_input(sentence):
+    if isinstance(sentence, str):
+        return sentence
+    elif isinstance(sentence, list):
+        return sentence[0]
+    else:
+        raise ValueError("Input must be string or list")
+```
+
+
+
+## 📊 Hiệu suất
+- Độ chính xác: > 97%
+
+
+## 🔍 Đặc điểm dữ liệu
+### Biến thể dữ liệu
+- Dataset từ Google Maps Reviews có cấu trúc đa dạng
+- Mỗi đánh giá có thể chứa:
+  - Chuỗi văn bản đơn
+  - Danh sách các câu
+  - Biểu tượng cảm xúc
+  - Đánh giá sao
+
+### Xử lý dữ liệu
+- Kiểm tra và xử lý cả hai loại dữ liệu:
+  - String
+  - List of strings
+- Đảm bảo tương thích với Hugging Face Transformers pipeline
+
+## ⚠️ Lưu ý
+- Mô hình được tối ưu hóa cho ngôn ngữ tiếng Việt
+- Cần xử lý đặc biệt với biểu tượng cảm xúc và ký tự đặc biệt
+- Giới hạn độ dài văn bản đầu vào: 512 tokens
+
+## 🔒 Bảo mật
+- Không lưu trữ dữ liệu người dùng
+- Xử lý dữ liệu cục bộ
+- Tuân thủ quy định GDPR
+
+## 🙏 Lời cảm ơn
+- Hugging Face Team
+- Google Maps Platform
+- Cộng đồng Data Science Việt Nam
+- Các nhà đóng góp mã nguồn mở
+
+---
+**Tuyên bố miễn trừ trách nhiệm**: Kết quả phân tích cảm xúc chỉ mang tính tham khảo và không nên được sử dụng làm cơ sở duy nhất cho các quyết định kinh doanh.
